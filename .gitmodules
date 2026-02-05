@@ -1,3 +1,12 @@
 [submodule "models/pspnet"]
 	path = models/pspnet
 	url = https://github.com/hszhao/PSPNet
+[submodule "models/cut"]
+	path = models/cut
+	url = https://github.com/taesungp/contrastive-unpaired-translation
+[submodule "models/unit"]
+	path = models/unit
+	url = https://github.com/mingyuliutw/UNIT
+[submodule "models/munit"]
+	path = models/munit
+	url = https://github.com/NVlabs/MUNIT
