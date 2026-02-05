@@ -232,3 +232,6 @@ runs/
 # Eccezioni
 !data/.gitkeep
 !results/.gitkeep
+
+.DS_Store
+**/.DS_Store
