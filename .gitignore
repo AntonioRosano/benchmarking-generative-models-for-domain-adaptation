@@ -205,3 +205,26 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# ============================
+# Project-specific ignores
+# ============================
+
+# Datasets
+data/
+
+# Training outputs
+checkpoints/
+logs/
+outputs/
+results/
+
+# Model weights
+*.pth
+*.ckpt
+*.pt
+
+# Experiment tracking
+wandb/
+tensorboard/
+runs/
