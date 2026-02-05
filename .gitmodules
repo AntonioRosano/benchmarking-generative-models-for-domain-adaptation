@@ -1,0 +1,3 @@
+[submodule "models/pspnet"]
+	path = models/pspnet
+	url = https://github.com/hszhao/PSPNet
