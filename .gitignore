@@ -228,3 +228,7 @@ results/
 wandb/
 tensorboard/
 runs/
+
+# Eccezioni
+!data/.gitkeep
+!results/.gitkeep
