@@ -64,7 +64,7 @@ def fix_cut_options_bug():
     """
     print("\n[INFO] Controllo presenza bug in CUT model...")
     
-    # 1. Puntiamo al file GIUSTO (quello che dava errore nel traceback)
+    # 1. Puntiamo al file
     model_file = os.path.join(ROOT_DIR, "models/cut/models/cut_model.py")
     
     if not os.path.exists(model_file):
@@ -74,8 +74,7 @@ def fix_cut_options_bug():
     with open(model_file, "r") as f:
         content = f.read()
     
-    # 2. Cerchiamo la stringa ESATTA che causa il crash (quella con le parentesi tonde)
-    # Nota: copiata dal tuo traceback di errore
+    # 2. Cerchiamo la stringa esatta
     buggy_string = "choices='(CUT, cut, FastCUT, fastcut)'"
     
     # 3. La sostituiamo con la lista corretta (parentesi quadre, niente virgolette esterne)
@@ -89,7 +88,6 @@ def fix_cut_options_bug():
             f.write(new_content)
         print("  -> File riparato con successo.")
     
-    # Controllo extra: a volte le virgolette sono diverse nel codice originale
     elif 'choices="(CUT, cut, FastCUT, fastcut)"' in content:
         print("  -> Bug trovato (versione doppi apici)! Applicazione patch...")
         new_content = content.replace('choices="(CUT, cut, FastCUT, fastcut)"', fixed_string)

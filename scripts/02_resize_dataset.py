@@ -3,7 +3,7 @@ import shutil
  
 
 # --- CONFIGURAZIONE ---
-# Assicurati che i percorsi siano corretti rispetto a dove lanci lo script
+
 SRC_FRAME_TRAIN = "../data/EGO-CH-OBJ-SEG/synthetic/train/frames"
 SRC_LABEL_TRAIN = "../data/EGO-CH-OBJ-SEG/synthetic/train/labels"
 SRC_FRAME_TEST = "../data/EGO-CH-OBJ-SEG/synthetic/test/frames"
@@ -26,7 +26,7 @@ def main():
     os.makedirs(DST_FRAME_TEST, exist_ok=True)
     os.makedirs(DST_LABEL_TEST, exist_ok=True)
 
-    # 2. Legge e ORDINA i file (fondamentale per mantenere l'allineamento)
+    # 2. Legge e ORDINA i file
     # Filtriamo per ignorare file nascosti o di sistema
     frames_train = sorted([f for f in os.listdir(SRC_FRAME_TRAIN) if not f.startswith('.')])
     labels_train = sorted([f for f in os.listdir(SRC_LABEL_TRAIN) if not f.startswith('.')])
@@ -35,8 +35,6 @@ def main():
     labels_test = sorted([f for f in os.listdir(SRC_LABEL_TEST) if not f.startswith('.')])
 
 
-
-    # Controllo di sicurezza
     if len(frames_train) != len(labels_train):
         print(f"ATTENZIONE: Trovati {len(frames_train)} frame e {len(labels_train)} label nel train set.")
         print("Assicurati che i file siano accoppiati correttamente prima di procedere.")
@@ -46,7 +44,6 @@ def main():
         print("Assicurati che i file siano accoppiati correttamente prima di procedere.")
 
     # 3. Applica il slicing: Prende 1 elemento ogni 3
-    # Sintassi [start:stop:step]
     selected_frames_train = frames_train[::3]
     selected_labels_train = labels_train[::3]
 
@@ -58,11 +55,9 @@ def main():
         src_f_path = os.path.join(SRC_FRAME_TRAIN, f_name)
         src_l_path = os.path.join(SRC_LABEL_TRAIN, l_name)
         
-        # Percorsi completi destinazione
         dst_f_path = os.path.join(DST_FRAME_TRAIN, f_name)
         dst_l_path = os.path.join(DST_LABEL_TRAIN, l_name)
 
-        # Copia effettiva
         shutil.copy2(src_f_path, dst_f_path)
         shutil.copy2(src_l_path, dst_l_path)
 
