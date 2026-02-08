@@ -1,6 +1,3 @@
-[submodule "models/cut"]
-	path = models/cut
-	url = https://github.com/taesungp/contrastive-unpaired-translation
 [submodule "models/unit"]
 	path = models/unit
 	url = https://github.com/mingyuliutw/UNIT
