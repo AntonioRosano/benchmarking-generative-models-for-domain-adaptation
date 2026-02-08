@@ -7,3 +7,6 @@
 [submodule "models/pspnet"]
 	path = models/pspnet
 	url = https://github.com/hszhao/semseg
+[submodule "models/cut"]
+	path = models/cut
+	url = https://github.com/taesungp/contrastive-unpaired-translation
