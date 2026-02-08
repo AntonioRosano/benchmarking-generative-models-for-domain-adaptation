@@ -211,7 +211,7 @@ __marimo__/
 # ============================
 
 # Datasets
-data/
+data/EGO-CH-OBJ-SEG
 
 # Training outputs
 checkpoints/
@@ -235,3 +235,5 @@ runs/
 
 .DS_Store
 **/.DS_Store
+
+to-do.txt
