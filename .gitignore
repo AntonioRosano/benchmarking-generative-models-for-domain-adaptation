@@ -211,7 +211,7 @@ __marimo__/
 # ============================
 
 # Datasets
-data/EGO-CH-OBJ-SEG
+data
 
 # Training outputs
 checkpoints/
