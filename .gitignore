@@ -217,7 +217,7 @@ data
 checkpoints/
 logs/
 outputs/
-results/
+
 
 # Model weights
 *.pth
