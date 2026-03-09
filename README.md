@@ -23,7 +23,7 @@ La nostra pipeline si divide in due stadi principali:
    * Sottoposta a *fine-tuning* sulle immagini reali tradotte dai modelli generativi del primo step.
 
 ## Dataset
-Il progetto si basa sul dataset **EGO-CH**, che comprende frame estratti da video in prima persona all'interno della Galleria Regionale di Palazzo Bellomo (Siracusa) e la rispettiva controparte sintetica (generata tramite Unity).
+Il progetto si basa sul dataset **EGO-CH**, che comprende frame estratti da video in prima persona all'interno della Galleria Regionale di Palazzo Bellomo (Siracusa) e la rispettiva controparte sintetica (generata tramite Blender).
 
 ## Utilizzo
 
