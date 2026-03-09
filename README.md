@@ -1,80 +1,33 @@
-# benchmarking-generative-models-for-domain-adaptation
+# Benchmarking Generative Models for Domain Adaptation
 
-This repository contains the code and experiments developed as part of a
-**Deep Learning course project**, aimed at replicating and extending an
-existing semantic segmentation pipeline for artworks in cultural heritage
-environments.
+Questo repository contiene il codice, i notebook e la documentazione del progetto accademico di Deep Learning (A.A. 2025-2026) realizzato da **Marco Gionfriddo, Antonio Rosano e Angelo Spadola**.
 
-The project focuses on the experimental analysis of generative models
-for **synthetic-to-real domain adaptation**.
+Il progetto esplora le tecniche di **Unsupervised Domain Adaptation (UDA)** per la segmentazione semantica di opere d'arte in siti culturali, affrontando il problema del Domain Shift tra immagini sintetiche (generate da modelli 3D) e fotografie reali.
 
-The work is based on the paper:
 
-> *Semantic Object Segmentation in Cultural Sites using Real and Synthetic Data*  
-> Francesco Ragusa, Daniele Di Mauro, Alfio Palermo, Antonino Furnari, Giovanni Maria Farinella
+## Obiettivo del Progetto
+L'addestramento di modelli di segmentazione semantica richiede enormi quantità di dati annotati manualmente, un processo costoso e soggetto a errori. L'utilizzo di dati sintetici (con maschere generate automaticamente) è un'alternativa valida, ma soffre del divario di dominio rispetto alle immagini reali.
 
-In the original work, domain adaptation between synthetic and real images
-is performed using CycleGAN.  
-**In this project, we keep the original pipeline unchanged and replace
-CycleGAN with alternative generative models**, in order to evaluate their
-impact on segmentation performance.
+L'obiettivo di questo studio è valutare se e come i moderni modelli generativi di Image-to-Image Translation possano colmare questo divario, traducendo le immagini reali nello stile di quelle sintetiche prima di sottoporle a una rete di segmentazione pre-addestrata.
 
----
+## Architettura e Pipeline
+La nostra pipeline si divide in due stadi principali:
 
-## Original Pipeline
+1. **Image-to-Image Translation:** Abbiamo testato e confrontato tre diverse architetture generative per tradurre le foto reali nel dominio sintetico:
+   * **[CUT]** (Contrastive Unpaired Translation)
+   * **[UNIT]** (UNsupervised Image-to-image Translation)
+   * **[MUNIT]** (Multimodal UNsupervised Image-to-image Translation)
 
-The original architecture consists of:
-- **PSPNet** for pixel-level semantic segmentation
-- **Synthetic images** generated from a 3D model of the cultural site
-- **CycleGAN** for synthetic-to-real domain adaptation
-
----
-
-## Our Contribution
-
-As part of a Deep Learning course project, our contribution consists of:
-- Replicating the original experimental setup
-- Replacing **CycleGAN** with alternative, state-of-the-art generative
-  models for unpaired image-to-image translation:
-  - CUT
-  - UNIT
-  - MUNIT
-- Benchmarking their effectiveness using the same dataset, metrics and
-  training protocol as the original paper
-
-This allows a fair and controlled comparison between different
-domain adaptation strategies.
-
----
+2. **Segmentazione Semantica:** Abbiamo utilizzato **PSPNet** (Pyramid Scene Parsing Network). La rete è stata:
+   * Pre-addestrata esclusivamente sul dataset sintetico.
+   * Sottoposta a *fine-tuning* sulle immagini reali tradotte dai modelli generativi del primo step.
 
 ## Dataset
+Il progetto si basa sul dataset **EGO-CH**, che comprende frame estratti da video in prima persona all'interno della Galleria Regionale di Palazzo Bellomo (Siracusa) e la rispettiva controparte sintetica (generata tramite Unity).
 
-We use the **EGO-CH-OBJ-SEG** dataset, which includes:
-- Synthetic images generated from a 3D model (Blender)
-- Real egocentric images acquired in a cultural heritage site
-- Pixel-level semantic segmentation masks for 24 artworks
+## Utilizzo
 
-Dataset link:  
-https://iplab.dmi.unict.it/EGO-CH-OBJ-SEG/
-
----
-
-## Experimental Setup
-
-- Segmentation model: PSPNet
-- Domain adaptation: CycleGAN (baseline), CUT, UNIT, MUNIT
-- Evaluation metrics:
-  - Pixel Accuracy
-  - Class Accuracy
-  - Mean Intersection over Union (mIoU)
-  - Frequency Weighted IoU
-
----
-
-## Academic Context
-
-This project was developed as part of a university-level course in
-**Deep Learning**, with the goal of gaining hands-on experience in:
-- reproducing results from the literature
-- modifying and extending existing architectures
-- performing fair experimental benchmarking of deep learning models
+```bash
+git clone https://github.com/TuoUsername/Benchmarking-Generative-Models.git
+cd Benchmarking-Generative-Models
+```
